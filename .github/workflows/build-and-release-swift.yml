@@ -2,6 +2,11 @@ name: Build and Release Swift
 
 on:
   workflow_dispatch: 
+    inputs:
+      create_ipa:
+        description: 'Create the patched IPA'
+        required: true
+        default: false
 
 env:
   SWIFTPROTOBUF_VERSION: "1.29.0"
@@ -100,11 +105,13 @@ jobs:
         echo "SWIFTPROTOBUF_ROOTLESS=org.swift.protobuf.swiftprotobuf_${{ env.SWIFTPROTOBUF_VERSION }}_iphoneos-arm64.deb" >> $GITHUB_ENV
 
     - name: Download OpenSpotifySafariExtension
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         git clone https://github.com/BillyCurtis/OpenSpotifySafariExtension
         echo "OPENSPOTIFYSAFARIEXTENSION=OpenSpotifySafariExtension/OpenSpotifySafariExtension.appex" >> $GITHUB_ENV
 
     - name: Download Decrypted Spotify Package
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         response=$(curl -ks 'https://decrypt.whoeevee.com/decrypted?appId=324684580&apiKey=${{ secrets.EEVEEDECRYPTER_API_KEY }}')
         link=$(echo "$response" | jq -r '.link')
@@ -113,6 +120,7 @@ jobs:
         echo "SPOTIFY_PACKAGE=$(echo *.ipa)" >> $GITHUB_ENV
 
     - name: Setup insert-dylib
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         git clone https://github.com/Tyilo/insert_dylib.git
         xcrun clang -x c -arch arm64 ./insert_dylib/insert_dylib/main.c -I/usr/include/ -o insert-dylib
@@ -120,6 +128,7 @@ jobs:
         sudo chmod +x /usr/local/bin/insert-dylib
 
     - name: Setup ivinject
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         git clone https://github.com/whoeevee/ivinject.git
         cp -r ./ivinject/KnownFrameworks ~/.ivinject
@@ -128,6 +137,7 @@ jobs:
         sudo chmod +x /usr/local/bin/ivinject-arm64
 
     - name: Setup ipapatch
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         wget https://github.com/asdfzxcvbn/ipapatch/releases/download/v2.1.0/ipapatch.macos-arm64
         sudo mv ipapatch.macos-arm64 /usr/local/bin/ipapatch
@@ -141,6 +151,7 @@ jobs:
         echo "LATEST_EEVEESPOTIFY_VERSION=$LATEST_EEVEESPOTIFY_VERSION" >> $GITHUB_ENV
 
     - name: Create EeveeSpotify Package
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         EEVEESPOTIFY_PACKAGE="EeveeSpotify-${EEVEESPOTIFY_VERSION}-${SPOTIFY_VERSION}.ipa"
         echo "EEVEESPOTIFY_PACKAGE=$EEVEESPOTIFY_PACKAGE" >> $GITHUB_ENV
@@ -150,6 +161,7 @@ jobs:
           -s - -d --level Optimal
 
     - name: Create Patched Package
+      if: ${{ github.event.inputs.create_ipa == 'true' }}
       run: |
         EEVEESPOTIFY_PATCHED_PACKAGE="EeveeSpotify-${EEVEESPOTIFY_VERSION}-${SPOTIFY_VERSION}-patched.ipa"
         echo "EEVEESPOTIFY_PATCHED_PACKAGE=$EEVEESPOTIFY_PATCHED_PACKAGE" >> $GITHUB_ENV
