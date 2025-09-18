@@ -1,0 +1,35 @@
+name: Build unsigned IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build .app without code signing
+        run: |
+          set -e
+          PROJECT="$(find . -name '*.xcodeproj' | head -n1)"
+          SCHEME="EeveeSpotifyReborn"
+          CONFIG=Release
+          BUILD_DIR="$GITHUB_WORKSPACE/build"
+          xcodebuild clean -project "$PROJECT" -scheme "$SCHEME" -configuration "$CONFIG" -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO BUILD_DIR="$BUILD_DIR" build
+
+      - name: Package unsigned .ipa
+        run: |
+          mkdir -p unsigned/Payload
+          cp -R build/Release-iphoneos/*.app unsigned/Payload/
+          cd unsigned
+          zip -qr ../EeveeSpotifyReborn-unsigned.ipa Payload
+          cd ..
+          ls -lh EeveeSpotifyReborn-unsigned.ipa
+
+      - name: Upload unsigned IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eevee-unsigned-ipa
+          path: EeveeSpotifyReborn-unsigned.ipa
