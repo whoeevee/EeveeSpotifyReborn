@@ -1,5 +1,15 @@
 import Foundation
 
+func getPremiumPlanBadge() throws -> Data {
+    let badge = YourPremiumBadge.with {
+        $0.name = "Eevee"
+        $0.version = 2
+        $0.colorCode = "#FFD2D7"
+    }
+    
+    return try badge.serializedData()
+}
+
 func getPremiumPlanRowData(originalPremiumPlanRow: PremiumPlanRow) throws -> Data {
     var premiumPlanRow = originalPremiumPlanRow
     
@@ -14,7 +24,7 @@ func getPlanOverviewData() throws -> Data {
     let plan = SpotifyPlan.with {
         $0.notice = SpotifyPlan.Notice.with {
             $0.message = "payment_notice".localized
-            $0.status = 2 // 0 - trial, 1 - prepaid, 2 - subsription
+            $0.status = 2 // 0 - trial, 1 - prepaid, 2 - subsсription
         }
         $0.subscription = SpotifyPlan.SubscriptionInfo.with {
             $0.planVariant = 2

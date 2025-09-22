@@ -10,7 +10,7 @@ class SPTDataLoaderServiceHook: ClassHook<NSObject>, SpotifySessionDelegate {
         let shouldReplaceLyrics = LyricsGroup.isActive
         
         return (shouldReplaceLyrics && url.isLyrics)
-            || (shouldPatchPremium && (url.isCustomize || url.isPremiumPlanRow || url.isPlanOverview))
+            || (shouldPatchPremium && (url.isCustomize || url.isPremiumPlanRow || url.isPremiumBadge || url.isPlanOverview))
     }
     
     // orion:new
@@ -56,6 +56,11 @@ class SPTDataLoaderServiceHook: ClassHook<NSObject>, SpotifySessionDelegate {
                         session: session
                     )
                     
+                    return
+                }
+                
+                if url.isPremiumBadge {
+                    respondWithCustomData(try getPremiumPlanBadge(), task: task, session: session)
                     return
                 }
                 

@@ -11,7 +11,7 @@ func exitApplication() {
 struct PremiumPatchingGroup: HookGroup { }
 
 struct EeveeSpotify: Tweak {
-    static let version = "6.1.3"
+    static let version = "6.1.4"
     
     static var hookTarget: VersionHookTarget {
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String

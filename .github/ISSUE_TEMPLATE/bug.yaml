@@ -10,7 +10,7 @@ body:
     attributes:
       label: Is this issue appropriate?
       description: |
-        Please read the list of [common issues](https://github.com/whoeevee/EeveeSpotify/blob/swift/common_issues.md).
+        Please read the list of [common issues](https://github.com/whoeevee/EeveeSpotifyReborn/blob/swift/common_issues.md).
       options:
         - label: I have read the document in its entirety
           required: true
