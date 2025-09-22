@@ -67,7 +67,7 @@ musixmatch_language_description = "Puoi inserire un codice di lingua a 2 lettere
 // UI
 
 lyrics_background_color_section = "Colore sfondo dei Testi";
-lyrics_background_color_section_description = "Se attivi <b>Mostra Colori Originali</b>, i testi appariranno nei colori originali di Spotify per le tracce che li supportano.
+lyrics_background_color_section_description = "Se attivi Mostra Colori Originali, i testi appariranno nei colori originali di Spotify per le tracce che li supportano.
 
 Puoi impostare un colore statico oppure un colore basato sulla copertina del brano. Questo fattore determina rispettivamente quanto i colori scuri vengano schiariti e i colori chiari scuriti. Generalmente, vedrai colori più chiari con un fattore di normalizzazione più alto.";
 
