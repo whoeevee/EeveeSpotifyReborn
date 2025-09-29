@@ -12,6 +12,10 @@ extension URL {
     var isPremiumPlanRow: Bool {
         self.path.contains("v1/GetPremiumPlanRow")
     }
+    
+    var isPremiumBadge: Bool {
+        self.path.contains("GetYourPremiumBadge")
+    }
 
     var isOpenSpotifySafariExtension: Bool {
         self.host == "eevee"

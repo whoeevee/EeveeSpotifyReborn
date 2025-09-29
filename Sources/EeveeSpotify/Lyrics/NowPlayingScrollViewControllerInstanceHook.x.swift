@@ -21,3 +21,19 @@ class NowPlayingScrollViewControllerInstanceHook: ClassHook<UIViewController> {
         return nowPlayingScrollViewController!
     }
 }
+
+class NowPlayingScrollPrivateServiceImplementationHook: ClassHook<NSObject> {
+    typealias Group = LyricsGroup
+    static let targetName = "NowPlaying_ScrollImpl.NowPlayingScrollPrivateServiceImplementation"
+    
+    func provideScrollViewControllerWithDependencies(_ dependencies: NSObject) -> UIViewController {
+        // spotify introduced some "nova scroll" with different controllers and logic
+        // hope they don't remove backward compatibility, i don't want to rewrite ts 😭🙏
+        
+        if EeveeSpotify.hookTarget != .lastAvailableiOS14 {
+            Ivars<Bool>(target).$__lazy_storage_$_isNovaScrollEnabled = false
+        }
+        
+        return orig.provideScrollViewControllerWithDependencies(dependencies)
+    }
+}

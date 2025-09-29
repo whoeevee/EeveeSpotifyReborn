@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 func modifyRemoteConfiguration(_ configuration: inout UcsResponse) {
     if UserDefaults.overwriteConfiguration {
@@ -6,6 +7,17 @@ func modifyRemoteConfiguration(_ configuration: inout UcsResponse) {
     }
     
     modifyAttributes(&configuration.attributes.accountAttributes)
+    modifyAssignedValues(&configuration.assignedValues)
+}
+
+func modifyAssignedValues(_ values: inout [AssignedValue]) {
+    if let index = values.firstIndex(where: { $0.propertyID.name == "enable_pick_and_shuffle_common_capping" }) {
+        values[index].enumValue = EnumValue.with {
+            $0.value = "Disabled"
+        }
+    }
+    
+    values.removeAll(where: { $0.propertyID.scope == "ios-feature-queue" })
 }
 
 func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
@@ -16,10 +28,6 @@ func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
     
     attributes["ads"] = AccountAttribute.with {
         $0.boolValue = false
-    }
-    
-    attributes["audio-quality"] = AccountAttribute.with {
-        $0.stringValue = "1"
     }
 
     attributes["can_use_superbird"] = AccountAttribute.with {
@@ -32,10 +40,6 @@ func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
 
     attributes["financial-product"] = AccountAttribute.with {
         $0.stringValue = "pr:premium,tc:0"
-    }
-
-    attributes["high-bitrate"] = AccountAttribute.with {
-        $0.boolValue = true
     }
 
     attributes["is-eligible-premium-unboxing"] = AccountAttribute.with {
