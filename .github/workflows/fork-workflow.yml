@@ -1,1 +1,27 @@
+name: Sync to Fork
 
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  sync-to-fork:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+      
+      
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      
+      
+      - name: Push to fork
+        run: |
+          git remote add fork https://${{ secrets.FORK_TOKEN }}@github.com/ВАШ_USERNAME/ВАШ_ФОРК.git
+          git push fork main
