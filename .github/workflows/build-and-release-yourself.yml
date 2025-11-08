@@ -5,12 +5,12 @@ on:
     inputs:
       ipa_url:
         description: "URL to the decrypted IPA file"
-        default: ""
+        default: "https://filebin.net/iknhjj6b88u3y1nd/com.spotify.client_9.0.91_und3fined.ipa"
         required: true
         type: string
       tweak_url:
         description: "URL to the EeveeSpotify tweak file"
-        default: ""
+        default: "https://github.com/whoeevee/EeveeSpotifyReborn/releases/download/swift6.2/com.eevee.spotify_6.2_iphoneos-arm64.deb"
         required: true
         type: string
 
