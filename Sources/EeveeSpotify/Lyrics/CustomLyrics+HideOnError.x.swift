@@ -2,7 +2,7 @@ import Orion
 import UIKit
 
 class ErrorViewControllerHook: ClassHook<UIViewController> {
-    typealias Group = LyricsGroup
+    typealias Group = BaseLyricsGroup
     
     static var targetName: String {
         switch EeveeSpotify.hookTarget {
@@ -14,17 +14,29 @@ class ErrorViewControllerHook: ClassHook<UIViewController> {
     func loadView() {
         orig.loadView()
         
-        guard UserDefaults.lyricsOptions.hideOnError, let controller = nowPlayingScrollViewController else {
+        guard UserDefaults.lyricsOptions.hideOnError else {
             return
         }
         
-        var providers = controller.activeProviders
-        
-        providers.removeAll(
-            where: { NSStringFromClass(type(of: $0)) == HookTargetNameHelper.lyricsScrollProvider }
-        )
-        
-        controller.activeProviders = providers
-        controller.collectionView().reloadData()
+        if let controller = nowPlayingScrollViewController {
+            controller.dataSource.activeProviders.removeAll {
+                NSStringFromClass(type(of: $0)) == HookTargetNameHelper.lyricsScrollProvider
+            }
+            
+            controller.collectionView().reloadData()
+        }
+        else if let controller = npvScrollViewController, let dataSource = scrollDataSource {
+            let lyricsProviderIndex = dataSource.activeProviders.firstIndex {
+                NSStringFromClass(type(of: $0)) == HookTargetNameHelper.lyricsScrollProvider
+            }
+            
+            let collectionView = controller.collectionView()
+            let dataSource = Ivars<__UIDiffableDataSource>(collectionView.dataSource!)._impl
+            
+            let itemIdentifiers = dataSource.itemIdentifiers()
+            let lyricsProviderItemIdentifier = itemIdentifiers[lyricsProviderIndex!]
+            
+            dataSource.deleteItemsWithIdentifiers([lyricsProviderItemIdentifier])
+        }
     }
 }

@@ -22,37 +22,9 @@ extension NowPlayingScrollViewController {
         }
     }
     
-    //
-    
-    private var dataSource: NSObject {
+    var dataSource: NowPlayingScrollDataSourceImplementation {
         get {
-            Ivars<NSObject>(nowPlayingScrollViewModel).dataSource
-        }
-    }
-    
-    var activeProviders: Array<NSObject> {
-        get {
-            Ivars<Array<NSObject>>(dataSource).activeProviders
-        }
-        set {
-            Ivars<Array<NSObject>>(dataSource).activeProviders = newValue
-        }
-    }
-    
-    //
-    
-    private var backgroundViewController: NSObject {
-        get {
-            Ivars<NSObject>(self).backgroundViewController
-        }
-    }
-    
-    var backgroundViewModel: SPTNowPlayingBackgroundViewModel {
-        get {
-            let ivars = Ivars<SPTNowPlayingBackgroundViewModel>(self.backgroundViewController)
-            return EeveeSpotify.hookTarget == .latest
-                ? ivars.artworkColorObservable
-                : ivars.viewModel
+            Ivars<NowPlayingScrollDataSourceImplementation>(nowPlayingScrollViewModel).dataSource
         }
     }
 }

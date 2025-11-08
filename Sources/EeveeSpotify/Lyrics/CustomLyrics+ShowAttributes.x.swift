@@ -2,7 +2,7 @@ import Orion
 import UIKit
 
 class LyricsOnlyViewControllerHook: ClassHook<UIViewController> {
-    typealias Group = LyricsGroup
+    typealias Group = BaseLyricsGroup
     
     static var targetName: String {
         switch EeveeSpotify.hookTarget {

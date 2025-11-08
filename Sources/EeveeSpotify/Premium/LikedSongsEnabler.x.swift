@@ -6,7 +6,7 @@ private let likedTracksRow: [String: Any] = [
 ]
 
 class HUBViewModelBuilderImplementationHook: ClassHook<NSObject> {
-    typealias Group = PremiumPatchingGroup
+    typealias Group = BasePremiumPatchingGroup
     static let targetName: String = "HUBViewModelBuilderImplementation"
     
     func addJSONDictionary(_ dictionary: NSDictionary?) {

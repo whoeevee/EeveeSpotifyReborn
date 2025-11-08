@@ -85,10 +85,6 @@ func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
         $0.stringValue = formatter.string(from: oneYearFromNow)
     }
 
-    attributes["public-toplist"] = AccountAttribute.with {
-        $0.stringValue = "1"
-    }
-
     attributes["shuffle-eligible"] = AccountAttribute.with {
         $0.boolValue = true
     }

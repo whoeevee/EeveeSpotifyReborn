@@ -2,12 +2,13 @@ import Orion
 import UIKit
 
 class LyricsFullscreenViewControllerHook: ClassHook<UIViewController> {
-    typealias Group = LyricsGroup
+    typealias Group = BaseLyricsGroup
     
     static var targetName: String {
         switch EeveeSpotify.hookTarget {
         case .lastAvailableiOS14: return "Lyrics_CoreImpl.FullscreenViewController"
-        default: return "Lyrics_FullscreenPageImpl.FullscreenViewController"
+        case .lastAvailableiOS15: return "Lyrics_FullscreenPageImpl.FullscreenViewController"
+        default: return "Lyrics_FullscreenElementPageImpl.FullscreenElementViewController"
         }
     }
 
@@ -18,6 +19,26 @@ class LyricsFullscreenViewControllerHook: ClassHook<UIViewController> {
             && lyricsState.fallbackError == nil
             && !lyricsState.wasRomanized
             && !lyricsState.isEmpty {
+            return
+        }
+        
+        if EeveeSpotify.hookTarget == .latest {
+            guard let fullscreenView = WindowHelper.shared.findFirstSubview(
+                "Lyrics_FullscreenElementPageImpl.FullscreenView",
+                in: target.view
+            ) else {
+                return
+            }
+            
+            let controlsView = Ivars<UIView>(fullscreenView).controlsView
+            let contextMenuButtonContainer = Ivars<UIView>(controlsView).contextMenuButtonContainer
+            
+            if let contextButton = contextMenuButtonContainer.subviews(
+                matching: "Encore6Button"
+            ).first as? UIControl {
+                contextButton.isEnabled = false
+            }
+            
             return
         }
         

@@ -1,39 +1,39 @@
 import Orion
 import UIKit
 
-var nowPlayingScrollViewController: NowPlayingScrollViewController?
+var statefulPlayer: StatefulPlayerImplementation?
+var backgroundViewModel: SPTNowPlayingBackgroundViewModel?
+var scrollDataSource: NowPlayingScrollDataSourceImplementation?
 
-class NowPlayingScrollViewControllerInstanceHook: ClassHook<UIViewController> {
-    typealias Group = LyricsGroup
-    static let targetName = "NowPlaying_ScrollImpl.NowPlayingScrollViewController"
-    
-    func nowPlayingScrollViewModelWithDidMoveToRelativeTrack(
-        _ track: SPTPlayerTrack,
-        withDifferentProviders: Bool,
-        scrollEnabledValueChanged: Bool
-    ) -> NowPlayingScrollViewController {
-        nowPlayingScrollViewController = orig.nowPlayingScrollViewModelWithDidMoveToRelativeTrack(
-            track,
-            withDifferentProviders: withDifferentProviders,
-            scrollEnabledValueChanged: scrollEnabledValueChanged
-        )
-        
-        return nowPlayingScrollViewController!
-    }
-}
+var nowPlayingScrollViewController: NowPlayingScrollViewController?
+var npvScrollViewController: NPVScrollViewController?
 
 class NowPlayingScrollPrivateServiceImplementationHook: ClassHook<NSObject> {
-    typealias Group = LyricsGroup
+    typealias Group = BaseLyricsGroup
     static let targetName = "NowPlaying_ScrollImpl.NowPlayingScrollPrivateServiceImplementation"
     
     func provideScrollViewControllerWithDependencies(_ dependencies: NSObject) -> UIViewController {
-        // spotify introduced some "nova scroll" with different controllers and logic
-        // hope they don't remove backward compatibility, i don't want to rewrite ts 😭🙏
+        let scrollViewController = orig.provideScrollViewControllerWithDependencies(dependencies)
         
-        if EeveeSpotify.hookTarget != .lastAvailableiOS14 {
-            Ivars<Bool>(target).$__lazy_storage_$_isNovaScrollEnabled = false
+        if NSStringFromClass(type(of: scrollViewController)) ~= "NowPlayingScrollViewController" {
+            nowPlayingScrollViewController = Dynamic.convert(
+                scrollViewController,
+                to: NowPlayingScrollViewController.self
+            )
+        }
+        else {
+            statefulPlayer = Ivars<StatefulPlayerImplementation>(dependencies).statefulPlayer
+            scrollDataSource = Ivars<NowPlayingScrollDataSourceImplementation>(target)
+                .$__lazy_storage_$_scrollDataSource
+            npvScrollViewController = Dynamic.convert(
+                scrollViewController,
+                to: NPVScrollViewController.self
+            )
         }
         
-        return orig.provideScrollViewControllerWithDependencies(dependencies)
+        backgroundViewModel = Ivars<SPTNowPlayingBackgroundViewModel>(dependencies)
+            .backgroundViewModel
+        
+        return scrollViewController
     }
 }

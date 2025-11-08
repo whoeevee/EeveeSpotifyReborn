@@ -1,4 +1,5 @@
 import Orion
+import EeveeSpotifyC
 import UIKit
 
 func exitApplication() {
@@ -8,10 +9,24 @@ func exitApplication() {
     }
 }
 
-struct PremiumPatchingGroup: HookGroup { }
+struct BasePremiumPatchingGroup: HookGroup { }
+
+struct LegacyPremiumPatchingGroup: HookGroup { }
+struct ModernPremiumPatchingGroup: HookGroup { }
+
+func activatePremiumPatchingGroup() {
+    BasePremiumPatchingGroup().activate()
+    
+    if EeveeSpotify.hookTarget == .lastAvailableiOS14 {
+        LegacyPremiumPatchingGroup().activate()
+    }
+    else {
+        ModernPremiumPatchingGroup().activate()
+    }
+}
 
 struct EeveeSpotify: Tweak {
-    static let version = "6.1.6"
+    static let version = "6.2"
     
     static var hookTarget: VersionHookTarget {
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -36,11 +51,18 @@ struct EeveeSpotify: Tweak {
         }
         
         if UserDefaults.patchType.isPatching {
-            PremiumPatchingGroup().activate()
+            activatePremiumPatchingGroup()
         }
         
         if UserDefaults.lyricsSource.isReplacingLyrics {
-            LyricsGroup().activate()
+            BaseLyricsGroup().activate()
+            
+            if EeveeSpotify.hookTarget == .latest {
+                ModernLyricsGroup().activate()
+            }
+            else {
+                LegacyLyricsGroup().activate()
+            }
         }
     }
 }

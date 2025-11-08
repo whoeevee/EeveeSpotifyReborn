@@ -11,7 +11,7 @@ common_issues_tip_message = "Se stai riscontrando un problema, come non poter ri
 common_issues_tip_button = "Problemi comuni";
 
 reset_data = "Cancella cache";
-reset_data_description = "Cancella i dati cache e riavvia l'app.";
+reset_data_description = "Cancella i dati della memoria cache e riavvia l'app.";
 
 checking_for_update = "Verifico aggiornamenti...";
 update_available = "Aggiornamento disponibile";
@@ -48,12 +48,12 @@ musixmatch_user_token = "Token Utente Musixmatch";
 user_token_placeholder = "Inserisci il Token Utente o incolla le informazioni di Debug";
 
 enter_user_token = "Inserisci il Token Utente";
-enter_user_token_message = "Per utilizzare Musixmatch, devi recuperare il tuo token dall'app ufficiale. Scarica Musixmatch dall'App Store, registrati, poi vai su Impostazioni > Assistenza > Copia info di debug e incollale qui. Puoi anche estrarre il token utilizzando MITM.";
+enter_user_token_message = "Per utilizzare Musixmatch devi recuperare il tuo token dall'app ufficiale. Scarica Musixmatch dall'App Store, registrati, poi vai su Impostazioni > Assistenza > Copia info di debug e incollale qui. Puoi anche estrarre il token utilizzando MITM.";
 
 genius_fallback = "Genius Fallback";
 genius_fallback_description = "Carica i testi da Genius se c'è un problema con %@.";
 
-show_fallback_reasons = "Mostra motivi di Fallback";
+show_fallback_reasons = "Mostra motivo di Fallback";
 
 hide_lyrics_on_error = "Nascondi in caso di errore";
 hide_lyrics_on_error_description = "Rimuovi il testo se il caricamento fallisce.";
@@ -67,7 +67,7 @@ musixmatch_language_description = "Puoi inserire un codice di lingua a 2 lettere
 // UI
 
 lyrics_background_color_section = "Colore sfondo dei Testi";
-lyrics_background_color_section_description = "Se attivi Mostra Colori Originali, i testi appariranno nei colori originali di Spotify per le tracce che li supportano.
+lyrics_background_color_section_description = "Se attivi \"Mostra Colori Originali\", i testi appariranno nei colori originali di Spotify per le tracce che li supportano.
 
 Puoi impostare un colore statico oppure un colore basato sulla copertina del brano. Questo fattore determina rispettivamente quanto i colori scuri vengano schiariti e i colori chiari scuriti. Generalmente, vedrai colori più chiari con un fattore di normalizzazione più alto.";
 
@@ -89,7 +89,7 @@ livecontainer_sharing_description = "Condividi a LiveContainer e copia l'URL se 
 
 /* MARK: Premium PopUps */
 
-have_premium_popup = "Sembra che tu abbia un abbonamento Premium attivo, quindi il tweak non modificherà i dati e non limiterà l'uso delle funzionalità Premium lato server. Puoi gestire questa opzione nelle impostazioni di EeveeSpotify.";
+have_premium_popup = "Sembra che tu abbia un abbonamento Premium attivo, il tweak non modificherà i dati e non limiterà l'uso delle funzionalità Premium lato server. Puoi gestire questa opzione nelle impostazioni di EeveeSpotify.";
 
 high_audio_quality_popup = "La qualità audio molto alta viene gestita lato server e non è disponibile con questo tweak.";
 playlist_downloading_popup = "Il download delle playlist viene gestito lato server e non è disponibile con questo tweak. Puoi comunque scaricare i podcast e le playlist locali.";
@@ -104,7 +104,7 @@ could_not_share_popup = "Impossibile condividere con la destinazione selezionata
 fallback_attribute = "Fallback";
 romanized_attribute = "Romanizzato";
 
-musixmatch_unauthorized_popup = "Il tweak non riesce a caricare i testi da Musixmatch a causa di un errore di Autorizzazione. Controlla o aggiorna il tuo token Musixmatch. Se utilizzi un iPad, dovresti ottenere il token dall'app Musixmatch per iPad.";
+musixmatch_unauthorized_popup = "Il tweak non riesce a caricare i testi da Musixmatch a causa di un errore di autorizzazione. Controlla o aggiorna il tuo token Musixmatch. Se utilizzi un iPad, dovresti ottenere il token dall'app Musixmatch per iPad.";
 musixmatch_restricted_popup = "Il tweak non riesce a caricare i testi da Musixmatch poichè sono limitati. Probabilmente si tratta di un problema di copyright per via dell'indirizzo IP statunitense, dovresti cambiarlo se ti trovi negli Stati Uniti o usare una VPN.";
 
 // Errors Titles
@@ -128,7 +128,7 @@ liked_songs = "Brani che ti piacciono";
 contributors = "Collaboratori";
 
 request_anonymous_token = "Richiedi Token Anonimo";
-request_anonymous_token_description = "Clicca “Richiedi Token Anonimo” per richiedere un token a Musixmatch senza autorizzazione.";
+request_anonymous_token_description = "Clicca su “Richiedi Token Anonimo” per richiedere un token a Musixmatch senza autorizzazione.";
 
 lrclib_api = "Indirizzo del Server";
 
