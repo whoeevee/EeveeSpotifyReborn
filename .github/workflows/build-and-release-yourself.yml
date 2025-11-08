@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       ipa_url:
-        description: "URL to the decrypted IPA file"
+        description: "https://filebin.net/iknhjj6b88u3y1nd/com.spotify.client_9.0.91_und3fined.ipa"
         default: ""
         required: true
         type: string
       tweak_url:
-        description: "URL to the EeveeSpotify tweak file"
+        description: "https://github.com/whoeevee/EeveeSpotifyReborn/releases/download/swift6.2/com.eevee.spotify_6.2_iphoneos-arm64.deb"
         default: ""
         required: true
         type: string
