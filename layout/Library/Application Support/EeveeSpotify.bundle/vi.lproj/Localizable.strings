@@ -23,7 +23,7 @@ restart_is_required_description = "Cần khởi động lại ứng dụng sau k
 do_not_patch_premium = "Giữ nguyên Premium gốc";
 patching_description = "EeveeSpotify chặn các yêu cầu tải dữ liệu người dùng, giải mã và chỉnh sửa các tham số theo thời gian thực.
 
-Nếu bạn đang có gói Premium hoạt động, bạn có thể bật 'Không can thiệp Premium'. Tinh chỉnh này sẽ không vá dữ liệu hoặc hạn chế việc sử dụng các tính năng Premium phía máy chủ (server-sided).
+Nếu bạn đang có gói Premium hoạt động, bạn có thể bật 'Giữ nguyên Premium gốc'. Tinh chỉnh này sẽ không vá dữ liệu hoặc hạn chế việc sử dụng các tính năng Premium phía máy chủ (server-sided).
 
 %@";
 
