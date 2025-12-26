@@ -3,69 +3,73 @@
 patching = "Bản vá";
 lyrics = "Lời bài hát";
 customization = "Tùy chỉnh";
+experiments = "Thử nghiệm";
 
-common_issues_tip_title = "Gặp sự cố?";
+common_issues_tip_title = "Gặp vấn đề?";
 
-common_issues_tip_message = "Nếu bạn gặp lỗi (ví dụ: không phát được nhạc), hãy thử xem qua mục";
+common_issues_tip_message = "Nếu bạn đang gặp sự cố, ví dụ như không thể phát bất kỳ bài hát nào, hãy xem qua mục";
 common_issues_tip_button = "Các vấn đề thường gặp";
 
 reset_data = "Đặt lại dữ liệu";
-reset_data_description = "Xóa bộ nhớ đệm và khởi động lại ứng dụng.";
+reset_data_description = "Xóa dữ liệu bộ nhớ đệm và khởi động lại ứng dụng.";
 
 checking_for_update = "Đang kiểm tra cập nhật...";
 update_available = "Có bản cập nhật mới";
 
-restart_is_required_description = "Cần khởi động lại ứng dụng để áp dụng thay đổi";
+restart_is_required_description = "Cần khởi động lại ứng dụng sau khi thay đổi.";
 
 // Patching
 
 do_not_patch_premium = "Giữ nguyên Premium gốc";
-patching_description = "EeveeSpotify chặn các yêu cầu tải dữ liệu người dùng, giải mã và chỉnh sửa thông số theo thời gian thực.
+patching_description = "EeveeSpotify chặn các yêu cầu tải dữ liệu người dùng, giải mã và chỉnh sửa các tham số theo thời gian thực.
 
-Nếu bạn đang có gói Premium chính chủ, hãy bật 'Giữ nguyên Premium gốc'. Tùy chọn này sẽ không can thiệp vào dữ liệu hay hạn chế các tính năng Premium của bạn. Cần khởi động lại ứng dụng sau khi thay đổi.
+Nếu bạn đang có gói Premium hoạt động, bạn có thể bật 'Không can thiệp Premium'. Tinh chỉnh này sẽ không vá dữ liệu hoặc hạn chế việc sử dụng các tính năng Premium phía máy chủ (server-sided).
 
 %@";
 
 overwrite_configuration = "Ghi đè cấu hình";
-overwrite_configuration_description = "Thay thế cấu hình gốc bằng cấu hình đã chỉnh sửa. Việc này ảnh hưởng đến hầu hết giao diện (UI/UX) của ứng dụng. Tuy thường hữu ích nhưng đôi khi có thể gây lỗi.";
+overwrite_configuration_description = "Thay thế cấu hình từ xa (remote configuration) bằng bản Premium đã được trích xuất. Cấu hình này định nghĩa hầu hết các tham số giao diện UI/UX và có thể hữu ích, tuy nhiên đôi khi có thể gây lỗi.";
 
 // Lyrics
 
-do_not_replace_lyrics = "Không ghi đè lời bài hát";
+do_not_replace_lyrics = "Không thay thế lời bài hát";
 lyrics_source = "Nguồn lời bài hát";
-lyrics_source_description = "Chọn nguồn dữ liệu lời bài hát bạn muốn:
+lyrics_source_description = "Bạn có thể chọn nguồn lời bài hát mong muốn.
 
-Genius: Chất lượng tốt nhất, kho nhạc lớn nhất và cập nhật nhanh nhất. Tuy nhiên nguồn này không hỗ trợ lời bài hát chạy theo nhạc (time-synced).
+Genius: Cung cấp lời bài hát chất lượng nhất, số lượng bài nhiều nhất và cập nhật nhanh nhất. Đã, đang và sẽ không bao giờ hỗ trợ đồng bộ thời gian (time-synced).
 
-LRCLIB: Nguồn mở cung cấp lời chạy theo nhạc. Tuy nhiên dữ liệu còn thiếu ở nhiều bài hát.
+LRCLIB: Dịch vụ mở nhất, cung cấp lời bài hát đồng bộ thời gian. Tuy nhiên nguồn này còn thiếu lời cho nhiều bài hát.
 
-Musixmatch: Dịch vụ mặc định của Spotify. Hỗ trợ lời chạy theo nhạc, nhưng bạn cần có User Token để sử dụng.";
-lyrics_additional_info = "Nếu EeveeSpotify không tìm thấy hoặc không xử lý được lời bài hát, thông báo \"Không thể tải lời cho bài hát này\" sẽ hiện ra. Với nguồn Genius, đôi khi lời bài hát có thể bị sai do thuật toán tìm kiếm.";
-petitlyrics_description = "PetitLyrics: Cung cấp nhiều lời bài hát tiếng Nhật chạy theo nhạc và một số bài quốc tế.";
+Musixmatch: Dịch vụ mà Spotify sử dụng. Cung cấp lời bài hát đồng bộ cho nhiều bài, nhưng bạn cần có User Token để sử dụng nguồn này.";
+lyrics_additional_info = "Nếu EeveeSpotify không tìm thấy bài hát hoặc không thể xử lý lời, bạn sẽ thấy thông báo \"Không thể tải lời cho bài hát này\". Lời bài hát từ Genius có thể bị sai ở một số bài do cách tinh chỉnh thực hiện tìm kiếm. Tôi đã cố gắng để nó hoạt động trong hầu hết các trường hợp.";
+petitlyrics_description = "PetitLyrics: Cung cấp nhiều lời bài hát tiếng Nhật đồng bộ thời gian và một số bài quốc tế.";
 
 musixmatch_user_token = "Musixmatch User Token";
-user_token_placeholder = "Dán User Token hoặc Thông tin Gỡ lỗi";
+user_token_placeholder = "Nhập User Token hoặc Dán thông tin gỡ lỗi";
 
 enter_user_token = "Nhập User Token";
-enter_user_token_message = "Để dùng Musixmatch, bạn cần lấy User Token từ ứng dụng chính thức: Tải Musixmatch từ App Store > Đăng nhập > Cài đặt > Nhận trợ giúp > Sao chép thông tin gỡ lỗi, rồi dán vào đây. Bạn cũng có thể lấy token bằng cách bắt gói tin (MITM).";
+enter_user_token_message = "Để sử dụng Musixmatch, bạn cần lấy User Token từ ứng dụng chính thức. Tải Musixmatch từ App Store, đăng ký, sau đó vào Cài đặt > Nhận trợ giúp > Sao chép thông tin gỡ lỗi (Copy debug info), và dán vào đây. Bạn cũng có thể trích xuất token bằng cách bắt gói tin (MITM).";
 
 genius_fallback = "Dự phòng bằng Genius";
-genius_fallback_description = "Tự động lấy lời từ Genius nếu xảy ra lỗi với %@.";
+genius_fallback_description = "Tải lời từ Genius nếu gặp vấn đề với %@.";
 
-show_fallback_reasons = "Hiển thị lý do dùng nguồn dự phòng";
+show_fallback_reasons = "Hiển thị lý do dùng dự phòng";
+
+hide_lyrics_on_error = "Ẩn khi lỗi";
+hide_lyrics_on_error_description = "Xóa thành phần lời bài hát nếu tải thất bại.";
 
 romanized_lyrics = "Phiên âm Latin (Romaji)";
 romanized_lyrics_description = "Hiển thị phiên âm Latin cho tiếng Nhật, Hàn và Trung.";
 
-musixmatch_language = "Ngôn ngữ dịch Musixmatch";
-musixmatch_language_description = "Nhập mã ngôn ngữ 2 ký tự (ví dụ: vi, en) để xem lời dịch từ Musixmatch nếu có.";
+musixmatch_language = "Ngôn ngữ lời bài hát Musixmatch";
+musixmatch_language_description = "Bạn có thể nhập mã ngôn ngữ 2 ký tự của Musixmatch để xem lời dịch trên Musixmatch nếu có.";
 
 // UI
 
 lyrics_background_color_section = "Màu nền khung lời bài hát";
-lyrics_background_color_section_description = "Nếu bật 'Hiển thị màu gốc', lời bài hát sẽ dùng màu nền mặc định của Spotify cho bài hát đó.
+lyrics_background_color_section_description = "Nếu bật 'Hiển thị màu gốc', lời bài hát sẽ xuất hiện với màu gốc mà Spotify gán cho bài hát đó.
 
-Bạn có thể đặt màu tĩnh hoặc dùng hệ số chuẩn hóa dựa trên màu bìa bài hát. Hệ số này quyết định độ sáng/tối. Thông thường, hệ số cao hơn sẽ cho màu sáng hơn.";
+Bạn có thể đặt màu tĩnh hoặc dùng hệ số chuẩn hóa dựa trên màu trích xuất từ ảnh bìa bài hát. Hệ số này quyết định mức độ làm sáng các màu tối và làm tối các màu sáng. Thông thường, hệ số chuẩn hóa càng cao thì màu càng sáng.";
 
 display_original_colors = "Hiển thị màu gốc";
 
@@ -75,27 +79,39 @@ static_color = "Màu tĩnh";
 color_normalization_factor = "Hệ số chuẩn hóa màu";
 dark_popups = "Popup giao diện tối";
 
+// Experiments
+
+show_instagram_destination = "Hiện đích đến Instagram";
+show_instagram_destination_description = "Luôn hiển thị tùy chọn chia sẻ qua Instagram. %@";
+
+livecontainer_sharing = "Chia sẻ tới LiveContainer";
+livecontainer_sharing_description = "Chia sẻ tới LiveContainer và sao chép URL nếu đích đến đã chọn không được hỗ trợ.";
+
 /* MARK: Premium PopUps */
 
-have_premium_popup = "Có vẻ bạn đang dùng gói Premium, nên bản mod sẽ không can thiệp vào dữ liệu hay chặn tính năng Premium. Bạn có thể quản lý trong cài đặt EeveeSpotify.";
+have_premium_popup = "Có vẻ như bạn đang có gói Premium hoạt động, nên tinh chỉnh sẽ không vá dữ liệu hay hạn chế việc sử dụng các tính năng Premium phía máy chủ. Bạn có thể quản lý điều này trong cài đặt EeveeSpotify.";
 
-high_audio_quality_popup = "Chất lượng âm thanh 'Cực cao' là tính năng phía máy chủ (server-side) nên không khả dụng với bản mod này.";
-playlist_downloading_popup = "Tải nhạc offline là tính năng phía máy chủ (server-side) nên không khả dụng với bản mod này. Tuy nhiên, bạn vẫn có thể tải podcast.";
-download_local_playlist = "Tải xuống playlist cục bộ";
+high_audio_quality_popup = "Chất lượng âm thanh 'Rất cao' là tính năng phía máy chủ và không khả dụng với tinh chỉnh này.";
+playlist_downloading_popup = "Tải xuống danh sách phát gốc (Native playlist downloading) là tính năng phía máy chủ và không khả dụng với tinh chỉnh này. Tuy nhiên, bạn vẫn có thể tải các tập podcast và danh sách phát cục bộ.";
+download_local_playlist = "Tải xuống danh sách phát cục bộ";
+
+//
+
+could_not_share_popup = "Không thể chia sẻ tới đích đã chọn hoặc LiveContainer. URL đã được sao chép.";
 
 /* MARK: Lyrics */
 
 fallback_attribute = "Dự phòng";
 romanized_attribute = "Phiên âm";
 
-musixmatch_unauthorized_popup = "Không thể lấy lời từ Musixmatch do lỗi xác thực (Unauthorized). Vui lòng kiểm tra lại token. Nếu dùng iPad, hãy lấy token từ app Musixmatch cho iPad.";
-musixmatch_restricted_popup = "Không thể lấy lời từ Musixmatch do bị hạn chế (Restricted). Nguyên nhân thường do bản quyền tại Mỹ (US). Hãy đổi IP hoặc tắt VPN US.";
+musixmatch_unauthorized_popup = "Tinh chỉnh không thể tải lời từ Musixmatch do lỗi Xác thực (Unauthorized). Vui lòng kiểm tra hoặc cập nhật token Musixmatch. Nếu bạn dùng iPad, hãy lấy token từ ứng dụng Musixmatch cho iPad.";
+musixmatch_restricted_popup = "Tinh chỉnh không thể tải lời từ Musixmatch do bị hạn chế. Có thể do vấn đề bản quyền với địa chỉ IP Mỹ (US), vì vậy hãy đổi IP nếu bạn đang ở Mỹ hoặc sử dụng VPN.";
 
 // Errors Titles
 
 no_such_song = "Không tìm thấy bài hát";
 musixmatch_restricted = "Bị hạn chế";
-invalid_musixmatch_token = "Token không hợp lệ";
+invalid_musixmatch_token = "Không hợp lệ";
 decoding_error = "Lỗi giải mã";
 no_current_track = "Không có bài hát hiện tại";
 unknown_error = "Lỗi không xác định";
@@ -112,6 +128,14 @@ liked_songs = "Bài hát đã thích";
 contributors = "Người đóng góp";
 
 request_anonymous_token = "Yêu cầu Token ẩn danh";
-request_anonymous_token_description = "Bấm để lấy token nhanh từ Musixmatch mà không cần đăng nhập.";
+request_anonymous_token_description = "Chạm vào “Yêu cầu Token ẩn danh” để lấy token từ Musixmatch mà không cần đăng nhập.";
 
-lrclib_api = "Địa chỉ máy chủ (URL)";
+lrclib_api = "Địa chỉ máy chủ";
+
+// Snapshot of your benefits, should match official spotify loc
+
+ad_free_music_listening = "Nghe nhạc không quảng cáo";
+play_songs_in_any_order = "Phát bài hát theo thứ tự bất kỳ";
+organize_listening_queue = "Sắp xếp danh sách chờ";
+
+payment_notice = "EeveeSpotify áp dụng các bản vá để mở khóa một số tính năng Premium. Nó hoàn toàn miễn phí.";
