@@ -1,3 +1,7 @@
+# Discontinuation Notice
+
+https://t.me/SpotilifeIPAs/196
+
 ![Banner](Images/banner.png?)
 
 # The original EeveeSpotify repository was disabled due to a [DMCA takedown](https://github.com/github/dmca/blob/master/2025/08/2025-08-14-spotify.md). This repository will not contain the IPA packages, as they are most likely the reason for the takedown.
